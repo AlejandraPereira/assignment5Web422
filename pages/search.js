@@ -2,12 +2,12 @@ import { useRouter } from "next/router";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { useAtom } from "jotai";
-import { searchHistoryAtom } from "../store"; // Import atom
+import { searchHistoryAtom } from "../store"; 
 
 export default function AdvancedSearch() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const router = useRouter();
-    const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom); // Use Jotai atom
+    const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom); 
 
     const submitForm = (data) => {
         let queryString = `searchBy=${encodeURIComponent(data.searchBy)}`;
