@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { Row, Col, Pagination, Card } from 'react-bootstrap';
 import ArtworkCard from '@/components/ArtworkCard';
 import Error from 'next/error';
+import validObjectIDList from '@/public/data/validObjectIDList.json'
 
 
 
@@ -20,14 +21,16 @@ export default function ArtworkPage(){
     const {data, error} = useSWR(`https://collectionapi.metmuseum.org/public/collection/v1/search?${finalQuery}`);
 
     useEffect(()=>{
-        if (data){
+
+        if (data?.objectIDs){
+          let filteredResults = validObjectIDList.objectIDs.filter(x => data.objectIDs?.includes(x));
             const result =[];
-            for (let i = 0; i < data?.objectIDs?.length; i += PER_PAGE) {
-                const chunk = data?.objectIDs.slice(i, i + PER_PAGE);
-                result.push(chunk);
-              }
-              
-              setArtworkList(result);
+            for (let i = 0; i < filteredResults.length; i += PER_PAGE) {
+              const chunk = filteredResults.slice(i, i + PER_PAGE);
+              result.push(chunk);
+            }
+                 
+            setArtworkList(result);
             setPage(1)              
         }
     },[data]);
