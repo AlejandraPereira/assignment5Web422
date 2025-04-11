@@ -57,7 +57,7 @@ export default function AdvancedSearch() {
                         <Form.Label>Geo Location</Form.Label>
                         <Form.Control type="text" {...register("geoLocation")} />
                         <Form.Text className="text-muted">
-                            Case Sensitive (e.g., "Europe", "Paris", "New York").
+                            Case Sensitive (e.g., 'Europe', 'Paris', 'New York').
                         </Form.Text>
                     </Form.Group>
                 </Col>
@@ -66,7 +66,7 @@ export default function AdvancedSearch() {
                         <Form.Label>Medium</Form.Label>
                         <Form.Control type="text" {...register("medium")} />
                         <Form.Text className="text-muted">
-                            Case Sensitive (e.g., "Paintings", "Sculpture").
+                            Case Sensitive (e.g., 'Paintings', 'Sculpture').
                         </Form.Text>
                     </Form.Group>
                 </Col>
